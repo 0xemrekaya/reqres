@@ -16,10 +16,14 @@ class LoginController with CacheManager {
   final BuildContext context;
 
   Future<void> fetchUserLogin(String email, String password) async {
-    final response = await loginService.fetchLogin(UserRequestModel(email: email, password: password));
-    if (response != null) {
-      saveToken(response.token ?? '');
-      navigateToHome();
+    try {
+      final response = await loginService.fetchLogin(UserRequestModel(email: email, password: password));
+      if (response != null) {
+        saveToken(response.token ?? '');
+        navigateToHome();
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Email or password is incorrect")));
     }
   }
 

@@ -24,7 +24,6 @@ class _HomeViewState extends ConsumerState<HomeView> {
     final watch = ref.watch(homeControllerProvider);
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    final textStyle = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text(title)),
