@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reqres/screens/home/view/home_view.dart';
+import 'package:reqres/screens/splash/splash_view.dart';
 import 'package:reqres/theme/custom_theme.dart';
 import 'screens/login/login.dart';
 
@@ -12,6 +14,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, theme: CustomTheme.themeLight, routes: {}, home: LoginView());
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: CustomTheme.themeLight,
+        routes: {
+          HomeView.id: (context) => HomeView(),
+          LoginView.id: (context) => LoginView(),
+          SplashView.id: (context) => SplashView(),
+        },
+        home: SplashView());
   }
 }

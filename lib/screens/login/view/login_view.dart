@@ -4,15 +4,17 @@ import '../controller/controller.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
+  static const String id = 'login_view';
   final TextEditingController controllerEmail = TextEditingController();
   final TextEditingController controllerPassword = TextEditingController();
   final String emailText = 'Login';
   final String paswordText = 'Password';
   final String buttonText = 'Login';
-  LoginController loginConttroller = LoginController();
+  LoginController? loginConttroller;
 
   @override
   Widget build(BuildContext context) {
+    loginConttroller = LoginController(context);
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     final textStyle = Theme.of(context).textTheme;
@@ -35,7 +37,7 @@ class LoginView extends StatelessWidget {
                 decoration: InputDecoration(labelText: paswordText, border: const OutlineInputBorder())),
             FloatingActionButton(
               onPressed: () {
-                loginConttroller.fetchUserLogin(controllerEmail.text, controllerPassword.text);
+                loginConttroller!.fetchUserLogin(controllerEmail.text, controllerPassword.text);
               },
               child: const Icon(Icons.login),
             ),
