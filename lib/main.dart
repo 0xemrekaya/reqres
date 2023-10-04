@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'login/login.dart';
+import 'package:reqres/theme/custom_theme.dart';
+import 'screens/login/login.dart';
 
 void main() {
   runApp(const ProviderScope(child: MainApp()));
@@ -11,6 +12,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, routes: {}, home: LoginView());
+    return MaterialApp(debugShowCheckedModeBanner: false, theme: CustomTheme.themeLight, routes: {}, home: LoginView());
   }
 }

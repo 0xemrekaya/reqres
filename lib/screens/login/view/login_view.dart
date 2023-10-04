@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../controller/controller.dart';
+
 class LoginView extends StatelessWidget {
   LoginView({super.key});
   final TextEditingController controllerEmail = TextEditingController();
@@ -7,6 +9,7 @@ class LoginView extends StatelessWidget {
   final String emailText = 'Login';
   final String paswordText = 'Password';
   final String buttonText = 'Login';
+  LoginController loginConttroller = LoginController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,9 @@ class LoginView extends StatelessWidget {
                 controller: controllerPassword,
                 decoration: InputDecoration(labelText: paswordText, border: const OutlineInputBorder())),
             FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                loginConttroller.fetchUserLogin(controllerEmail.text, controllerPassword.text);
+              },
               child: const Icon(Icons.login),
             ),
           ],

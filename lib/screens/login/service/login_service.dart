@@ -16,7 +16,7 @@ class LoginService extends ILoginService {
 
   @override
   Future<UserResponseModel?> fetchLogin(UserRequestModel model) async {
-    final response = await dio.post(path, data: model);
+    final response = await dio.post(path, data: model.toJson());
     if (response.statusCode == HttpStatus.ok) {
       return UserResponseModel.fromJson(response.data);
     }
