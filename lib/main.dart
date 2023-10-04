@@ -18,10 +18,10 @@ class MainApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: CustomTheme.themeLight,
         routes: {
-          HomeView.id: (context) => HomeView(),
+          HomeView.id: (context) => const HomeView(),
           LoginView.id: (context) => LoginView(),
-          SplashView.id: (context) => SplashView(),
+          SplashView.id: (context) => const SplashView(),
         },
-        home: SplashView());
+        home: const SplashView());
   }
 }

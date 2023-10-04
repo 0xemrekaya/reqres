@@ -13,4 +13,10 @@ mixin CacheManager {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(CacheManagerKey.TOKEN.toString());
   }
+
+  Future<bool?> removeToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove(CacheManagerKey.TOKEN.toString());
+    return true;
+  }
 }

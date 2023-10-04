@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reqres/screens/home/controller/home_controller.dart';
 
+import '../../../core/core.dart';
+import '../../login/login.dart';
+
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
   static const String id = 'home_view';
@@ -25,6 +28,15 @@ class _HomeViewState extends ConsumerState<HomeView> {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text(title)),
+        actions: [
+          IconButton(
+            onPressed: () {
+              ref.read(authManagerProvider).logoutUser();
+              Navigator.pushNamedAndRemoveUntil(context, LoginView.id, (route) => false);
+            },
+            icon: const Icon(Icons.logout),
+          )
+        ],
       ),
       body: SafeArea(
         child: Center(

@@ -17,6 +17,18 @@ class AuthManager extends ChangeNotifier with CacheManager {
       notifyListeners();
     }
   }
+
+  Future<void> logoutUser() async {
+    final isTrue = await removeToken();
+    if (isTrue == null || isTrue == false) {
+      print("Hata");
+    }
+    if (isTrue == true) {
+      isLogin = false;
+      token = null;
+      notifyListeners();
+    }
+  }
 }
 
 final authManagerProvider = ChangeNotifierProvider<AuthManager>((ref) {
